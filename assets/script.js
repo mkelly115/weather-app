@@ -4,7 +4,7 @@ const formEl = document.getElementById("city-search");
 let localCity, temp, feelsLike, humidity, cityName, lat, lon
 
 function geoLocate(city) {
-    let cityUrl = "http://api.openweathermap.org/geo/1.0/direct?q=" + city + "&limit=1&appid=" + apiKey
+    let cityUrl = "https://api.openweathermap.org/geo/1.0/direct?q=" + city + "&limit=1&appid=" + apiKey
     console.log(cityUrl)
     fetch(cityUrl)
         .then(function (response) {
