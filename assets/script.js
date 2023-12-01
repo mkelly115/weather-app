@@ -86,12 +86,12 @@ function geoLocate(city) {
 
         .catch(function (error) {
             console.error("Error fetching data:", error);
-            // Display an error message on the page
+        
             displayError("Unable to fetch weather data. Please try again.");
         });
 
 }
-// Below is a Proof of concept for displaying info for the 5 day.
+
 function displayWeatherInfo(temp, feelsLike, humidity, cityName, icon, windSpeed,) {
     const weatherContainer = document.querySelector(".card-body");
     var today = dayjs().format('MMM D, YYYY');
@@ -157,25 +157,53 @@ function displayFiveDay(fiveDayHumidities, fiveDayWindSpeeds, fiveDayIcons, five
 }
 
 function saveUserCitiesToLocalStorage(cities) {
-    localStorage.setItem('userCities', JSON.stringify(cities));
+
+if (localStorage.getItem(cities) === null) {
+    localStorage.setItem('userCities', JSON.stringify(cities)) 
+  }
 }
 
+function createCityButtons() {
+    const userCitiesContainer = document.getElementById('userCities');
+    const userCities = JSON.parse(localStorage.getItem('userCities')) || [];
 
-// Display Error function for inner HTML
-// function displayError(message) {
-//     weatherContainer.innerHTML = `<p class="error">${message}</p>`;
-// }
+
+    userCitiesContainer.innerHTML = '';
+
+
+    userCities.forEach(city => {
+        const button = document.createElement('button');
+        button.textContent = city;
+        button.classList.add('city-button');
+
+   
+        button.addEventListener('click', function() {
+         event.preventDefault();
+            geoLocate(city);
+        });
+
+     
+        userCitiesContainer.appendChild(button);
+    });
+}
+
+function displayError(message) {
+    weatherContainer.innerHTML = `<p class="error">${message}</p>`;
+}
 
 formEl.addEventListener("submit", function (event) {
     event.preventDefault();
     const userCity = getUserCity.value;
     const existingUserCities = JSON.parse(localStorage.getItem('userCities')) || [];
-    existingUserCities.push(userCity);
-    saveUserCitiesToLocalStorage(existingUserCities);
+    if (!existingUserCities.includes(userCity)) {
+        existingUserCities.push(userCity);
+        saveUserCitiesToLocalStorage(existingUserCities);
+        createCityButtons();
+    }
+
     geoLocate(userCity);
+});
     
 
-});
+createCityButtons();
 // Will need to iterate and compare existing storage and not allow a copy of the storage when creating the buttons for local storage
-
-// could use something to add a .notation 5 day weather forcast to the existing variable that will hold temp, humidity, feels like, ect //
