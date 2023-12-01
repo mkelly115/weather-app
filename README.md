@@ -1,103 +1,17 @@
-# 06 Server-Side APIs: Weather Dashboard
+# Weather-App
 
-## Your Task
+The purpose of this project was to creat an application that could take user input of a city and use applicable API's (Openweather) to geolocate the correct long/lat to display the weather of that city to the user. It will also give a forecast for the following five days as well as use local storage to create buttons that allow a user to search an old city while retaining up to the minute information on the forecast.
 
-Third-party APIs allow developers to access their data and functionality by making requests with specific parameters to a URL. Developers are often tasked with retrieving data from another application's API and using it in the context of their own. Your challenge is to build a weather dashboard that will run in the browser and feature dynamically updated HTML and CSS.
+## Usage
 
-Use the [5 Day Weather Forecast](https://openweathermap.org/forecast5) to retrieve weather data for cities. The base URL should look like the following: `https://api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&appid={API key}`. After registering for a new API key, you may need to wait up to 2 hours for that API key to activate.
+When the user types in a city and hits either enter or clicks submit, the API will be called to find the correct lat/longitude for the named city entered by the user. It will then pass this information to a second API call that will return the relevant information for the day and next five days of forecast. This information is then displayed dynamically via JavaScript onto the page for the user to see as well as store the user inputed text within local storage. Local storage is called on every page refresh to dynamically create buttons that will allow the user to click them and pull up the current weather for that previous search.
 
-**Hint**: Using the 5 Day Weather Forecast API, you'll notice that you will need to pass in coordinates instead of just a city name. Using the OpenWeatherMap APIs, how could we retrieve geographical coordinates given a city name?
+## Conclusion
 
-You will use `localStorage` to store any persistent data. For more information on how to work with the OpenWeather API, refer to the [Full-Stack Blog on how to use API keys](https://coding-boot-camp.github.io/full-stack/apis/how-to-use-api-keys).
+In conclusion, this project at first seemed to be easy and quick coming off of our project. But I found a few intracacies that proved to cause some issues for me. I initially struggled with the CSS portion of this project as it is self addmitely my weak point. I was having alot of trouble getting things to look correct and position correct but I realized that by making the boxes in my HTMl to play with I could easily port them over to the JavaScript for dynamic rendering. I feel much more confident in my CSS abilities now. The second issue I ran into was limiting the button creation to a single button even if there are multiple searches for a city. This proved to be a tougher task than expected but with tooling around was solved with trial and error. Overall I would say this project reiterated my confidence in my ability to call APIs and use their info, and helped to solidify my knowledge of CSS and how it can interact with the HTML and JS.
 
-RENDER DATA FIRST THEN MAKE USABLE AND READABLE!!!
-## User Story
+# Live Link
 
-```
-AS A traveler
-I WANT to see the weather outlook for multiple cities
-SO THAT I can plan a trip accordingly
-```
 
-## Acceptance Criteria
-
-```
-GIVEN a weather dashboard with form inputs
-WHEN I search for a city
-THEN I am presented with current and future conditions for that city and that city is added to the search history
-WHEN I view current weather conditions for that city
-THEN I am presented with the city name, the date, an icon representation of weather conditions, the temperature, the humidity, and the wind speed
-WHEN I view future weather conditions for that city
-THEN I am presented with a 5-day forecast that displays the date, an icon representation of weather conditions, the temperature, the wind speed, and the humidity
-WHEN I click on a city in the search history
-THEN I am again presented with current and future conditions for that city
-```
-
-## Mock-Up
-
-The following image shows the web application's appearance and functionality:
-
-![The weather app includes a search option, a list of cities, and a five-day forecast and current weather conditions for Atlanta.](./Assets/06-server-side-apis-homework-demo.png)
-
-## Grading Requirements
-
-> **Note**: If a Challenge assignment submission is marked as “0”, it is considered incomplete and will not count towards your graduation requirements. Examples of incomplete submissions include the following:
->
-> * A repository that has no code
->
-> * A repository that includes a unique name but nothing else
->
-> * A repository that includes only a README file but nothing else
->
-> * A repository that only includes starter code
-
-This Challenge is graded based on the following criteria: 
-
-### Technical Acceptance Criteria: 40%
-
-* Satisfies all of the above acceptance criteria plus the following:
-
-    * Uses the OpenWeather API to retrieve weather data.
-
-    * Uses `localStorage` to store persistent data.
-
-### Deployment: 32%
-
-* Application deployed at live URL.
-
-* Application loads with no errors.
-
-* Application GitHub URL submitted.
-
-* GitHub repository that contains application code.
-
-### Application Quality: 15%
-
-* Application user experience is intuitive and easy to navigate.
-
-* Application user interface style is clean and polished.
-
-* Application resembles the mock-up functionality provided in the Challenge instructions.
-
-### Repository Quality: 13%
-
-* Repository has a unique name.
-
-* Repository follows best practices for file structure and naming conventions.
-
-* Repository follows best practices for class/id naming conventions, indentation, quality comments, etc.
-
-* Repository contains multiple descriptive commit messages.
-
-* Repository contains quality readme file with description, screenshot, and link to deployed application.
-
-## Review
-
-You are required to submit BOTH of the following for review:
-
-* The URL of the functional, deployed application.
-
-* The URL of the GitHub repository. Give the repository a unique name and include a readme describing the project.
-
-- - -
-© 2023 edX Boot Camps LLC. Confidential and Proprietary. All Rights Reserved.
+# Licensing
+MIT License within
